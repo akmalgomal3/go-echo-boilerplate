@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: go-echo-boilerplate
+spec:
+  containers:
+  - name: go-echo-boilerplate
+    image: us-central1-docker.pkg.dev/nomadic-grid-382206/go-echo-boilerplate/images:tag1
+    ports:
+    - containerPort: 1200
+    volumeMounts:
+    - name: go-echo-boilerplate-env-volume
+      mountPath: /app/.env
+  volumes:
+  - name: go-echo-boilerplate-env-volume
+    configMap:
+      name: go-echo-boilerplate-env

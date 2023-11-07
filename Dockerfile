@@ -7,8 +7,13 @@ RUN git clone https://github.com/akmalgomal3/go-echo-boilerplate.git .
 COPY go.mod go.sum ./
 RUN go mod download
 
+COPY . .
+
+COPY .env .
+RUN chmod 644 .env
+
 RUN go build -o main
 
-EXPOSE 8080
+EXPOSE 1200
 
 CMD ["./main"]
